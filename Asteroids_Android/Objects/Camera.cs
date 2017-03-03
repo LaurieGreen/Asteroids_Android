@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Mono_test_android2
+namespace Asteroids_Android
 {
     public class Camera
     {
@@ -90,7 +90,7 @@ namespace Mono_test_android2
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.LightingEnabled = true;
-                    effect.DirectionalLight0.DiffuseColor = new Vector3(0, 204, 0); // a red light
+                    effect.DirectionalLight0.DiffuseColor = new Vector3(0, 0, 0); // a red light
                     effect.DirectionalLight0.Direction = new Vector3(1, 1, 0);  // coming along the x-axis
                     effect.DirectionalLight0.SpecularColor = new Vector3(0, 0, 0); // with green highlights
 

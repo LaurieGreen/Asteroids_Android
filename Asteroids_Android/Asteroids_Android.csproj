@@ -69,6 +69,7 @@
     <Compile Include="Menus\HighScoreMenu.cs" />
     <Compile Include="Objects\Asteroid.cs" />
     <Compile Include="Objects\Bullet.cs" />
+    <Compile Include="Objects\GameplayButton.cs" />
     <Compile Include="Objects\MenuButton.cs" />
     <Compile Include="Objects\Camera.cs" />
     <Compile Include="Objects\Dust.cs" />

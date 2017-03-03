@@ -3,7 +3,7 @@
   <SourceFile>C:/Users/Laurie/Dev/XNA/Asteroids_Android/Asteroids_Android/Content/models/medium_roid.fbx</SourceFile>
   <SourceTime>2017-02-27T21:08:18.6682437+00:00</SourceTime>
   <DestFile>C:/Users/Laurie/Dev/XNA/Asteroids_Android/Asteroids_Android/Content/bin/Android/models/medium_roid.xnb</DestFile>
-  <DestTime>2017-03-01T23:01:44.7455818+00:00</DestTime>
+  <DestTime>2017-03-02T23:51:18.8267709+00:00</DestTime>
   <Importer>FbxImporter</Importer>
   <ImporterTime>2016-03-30T07:36:08+01:00</ImporterTime>
   <Processor>ModelProcessor</Processor>
@@ -54,7 +54,7 @@
   </Parameters>
   <Parameters>
     <Key>Scale</Key>
-    <Value>1</Value>
+    <Value>0.75</Value>
   </Parameters>
   <Parameters>
     <Key>SwapWindingOrder</Key>

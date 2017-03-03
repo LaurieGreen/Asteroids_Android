@@ -6,33 +6,39 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
 
-namespace Mono_test_android2
+namespace Asteroids_Android
 {
     class Level
     {
         Player player;
+        SoundEffect explosionSound;
         AsteroidEngine asteroidEngine;
         BulletEngine bulletEngine;
         bool isActive,isPaused;
-        MenuButton spinRight;
-        MenuButton spinLeft;
-        MenuButton shoot;
-        MenuButton thrust;
+        GameplayButton spinRight;
+        GameplayButton spinLeft;
+        GameplayButton shoot;
+        GameplayButton thrust;
         int screenWdith;
         int screenHeight;
 
-        public Level(Model playerModel, Camera camera, Model asteroidModel, Model bulletModel, List<Model> textures, int level, int lives, int score, GraphicsDeviceManager graphics)
+        public Level(Model playerModel, Camera camera, Model asteroidModel, Model bulletModel, List<Model> textures, int level, int lives, int score, GraphicsDeviceManager graphics, SoundEffectInstance engineInstance, SoundEffect explosionSound, SoundEffect laserSound)
         {
             screenWdith = graphics.GraphicsDevice.Viewport.Width;
             screenHeight = graphics.GraphicsDevice.Viewport.Height;
-            player = new Player(playerModel, Vector3.Zero, Vector3.Zero, camera, textures, lives, score);
+            this.explosionSound = explosionSound;
+            player = new Player(playerModel, Vector3.Zero, Vector3.Zero, camera, textures, lives, score, engineInstance, explosionSound);
             asteroidEngine = new AsteroidEngine(asteroidModel, camera, textures, level);
-            bulletEngine = new BulletEngine(bulletModel, camera);
+            bulletEngine = new BulletEngine(bulletModel, camera, laserSound);
             isActive = true;
             isPaused = false;
             asteroidEngine.ResetAsteroids(asteroidModel, camera, level);
-            //spinRight = new MenuButton(new Vector2(screenWdith-400,screenHeight-400), graphics);
+            spinRight = new GameplayButton(new Vector2(graphics.GraphicsDevice.Viewport.Width - 400, graphics.GraphicsDevice.Viewport.Height - 400), graphics, 400, 400);
+            spinLeft = new GameplayButton(new Vector2(graphics.GraphicsDevice.Viewport.Width - 810, graphics.GraphicsDevice.Viewport.Height - 400), graphics, 400, 400);
+            thrust = new GameplayButton(new Vector2(0, graphics.GraphicsDevice.Viewport.Height - 400), graphics, 400, 400);
+            shoot = new GameplayButton(new Vector2(410, graphics.GraphicsDevice.Viewport.Height - 400), graphics, 400, 400);
         }
 
         public Player getPlayer()
@@ -50,7 +56,7 @@ namespace Mono_test_android2
             return isActive;
         }
 
-        public void Update(KeyboardState state, Model bulletModel, Camera camera, float timeDelta, SoundEffectInstance engineInstance, Model[] asteroidModel, SoundEffect explosionSound, KeyboardState lastState, SoundEffect laserSound)
+        public void Update(KeyboardState state, Model bulletModel, Camera camera, float timeDelta, Model[] asteroidModel, KeyboardState lastState)
         {
             if (isPaused)
             {
@@ -62,10 +68,71 @@ namespace Mono_test_android2
             }
             if (isActive)
             {
-               
-                player.Update(state, bulletModel, camera, timeDelta, engineInstance);
+                int x = 0;
+                int y = 0;
+                bool isInputPressed = false;
+                TouchCollection touchPanelState = TouchPanel.GetState();
+
+                if (touchPanelState.Count >= 1)
+                {
+                    var touch = touchPanelState[0];
+                    x = (int)touch.Position.X;
+                    y = (int)touch.Position.Y;
+
+                    isInputPressed = touch.State == TouchLocationState.Pressed || touch.State == TouchLocationState.Moved;
+
+                    if (spinRight.getRect().Contains(new Vector2(x, y)))
+                    {
+                        spinRight.setIsClicked(true);
+                    }
+                    if (spinLeft.getRect().Contains(new Vector2(x, y)))
+                    {
+                        spinLeft.setIsClicked(true);
+                    }
+                    if (thrust.getRect().Contains(new Vector2(x, y)))
+                    {
+                        thrust.setIsClicked(true);
+                    }
+                    if (shoot.getRect().Contains(new Vector2(x, y)))
+                    {
+                        shoot.setIsClicked(true);
+                    }
+                }
+                else
+                {
+                    spinRight.setIsClicked(false);
+                    spinLeft.setIsClicked(false);
+                    thrust.setIsClicked(false);
+                    shoot.setIsClicked(false);
+                }
+                
+                //spinRight.update(new Vector2(x, y));
+                //spinLeft.update(new Vector2(x, y));
+
+                if (spinRight.getisClicked())
+                {
+                    player.setRotationRight();
+                }
+                if (spinLeft.getisClicked())
+                {
+                    player.setRotationLeft();
+                }
+                if (thrust.getisClicked())
+                {
+                    player.setThrust(camera);
+                }
+                if (!thrust.getisClicked())
+                {
+                    player.killThrust();
+                }
+                if (shoot.getisClicked())
+                {
+                    bulletEngine.shootBullet(player.getRotationMatrix().Up, GameConstants.BulletSpeedAdjustment, player.getPosition() + (0.725f * player.getRotationMatrix().Up), camera);
+                }
+
+                player.Update(state, bulletModel, camera, timeDelta);
                 asteroidEngine.Update(timeDelta, asteroidModel, camera);
-                bulletEngine.Update(state, lastState, player.getRotationMatrix().Up, GameConstants.BulletSpeedAdjustment, player.getPosition() + (0.725f * player.getRotationMatrix().Up), camera, timeDelta, laserSound);
+                bulletEngine.Update(state, lastState, player.getRotationMatrix().Up, GameConstants.BulletSpeedAdjustment, player.getPosition() + (0.725f * player.getRotationMatrix().Up), camera, timeDelta);
                 CheckCollisions(bulletModel, explosionSound);
             }
         }
@@ -176,15 +243,19 @@ namespace Mono_test_android2
 
         public void DrawUI(Camera camera, int level, int score, int lives, int asteroids, float multiplier, SpriteFont font, SpriteBatch spriteBatch, float width, float height)
         {
-           // spriteBatch.DrawString(large_font, "ASTEROIDS", new Vector2(width / 2 - (large_font.MeasureString("ASTEROIDS").Length() / 2), height / 16), Color.White);
+            // spriteBatch.DrawString(large_font, "ASTEROIDS", new Vector2(width / 2 - (large_font.MeasureString("ASTEROIDS").Length() / 2), height / 16), Color.White);
 
             //spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
+            spinRight.draw(spriteBatch);
+            spinLeft.draw(spriteBatch);
+            shoot.draw(spriteBatch);
+            thrust.draw(spriteBatch);
             spriteBatch.DrawString(font, "LIVES: " + lives, new Vector2(10, 0), Color.White);
-            spriteBatch.DrawString(font, "LEVEL: " + level, new Vector2(10, 20), Color.White);
+            spriteBatch.DrawString(font, "LEVEL: " + level, new Vector2(10, font.MeasureString("LIVES:").Y), Color.White);
             spriteBatch.DrawString(font, "SCORE: " + score, new Vector2(10, height- (font.MeasureString("SCORE").Y)), Color.White);
             spriteBatch.DrawString(font, "ASTEROIDS: " + asteroids, new Vector2(width - (font.MeasureString("ASTEROIDS: " + asteroids).Length()+10), height - (font.MeasureString("ASTEROIDS").Y)), Color.White);
             spriteBatch.DrawString(font, "MULTIPLIER: " + multiplier.ToString("0.00"), new Vector2(width - (font.MeasureString("MULTIPLIER: " + multiplier.ToString("0.00")).Length()+10), 0), Color.White);
-            spinRight.draw(spriteBatch);
+            //spinRight.draw(spriteBatch);
         }
     }
 }

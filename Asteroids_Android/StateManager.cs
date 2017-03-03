@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
-namespace Mono_test_android2
+namespace Asteroids_Android
 {
     class StateManager
     {
@@ -86,15 +86,15 @@ namespace Mono_test_android2
 
             random = new Random();
 
-            dustEngineFar = new DustEngine(graphics.GraphicsDevice, 2000, 0.3f, 0.005f, random);
-            dustEngineMiddle = new DustEngine(graphics.GraphicsDevice, 750, 1.0f, 0.01f, random);
+            //dustEngineFar = new DustEngine(graphics.GraphicsDevice, 2000, 0.3f, 0.005f, random);
+            //dustEngineMiddle = new DustEngine(graphics.GraphicsDevice, 750, 1.0f, 0.01f, random);
             dustEngineNear = new DustEngine(graphics.GraphicsDevice, 300, 2.0f, 0.05f, random);
             //SortHighScores();
         }
 
         public void LoadNewLevel(int lives, int score)
         {
-            level = new Level(playerModel, camera, asteroidModel[2], bulletModel, textures, currentLevel, lives, score, graphics);
+            level = new Level(playerModel, camera, asteroidModel[2], bulletModel, textures, currentLevel, lives, score, graphics, engineInstance, explosionSound, laserSound);
         }
 
         public void Update(GameTime gameTime, Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
@@ -104,7 +104,7 @@ namespace Mono_test_android2
             {
                 float timeDelta = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 //float thisplayingTime = (float)gameTime.TotalGameTime.TotalSeconds;
-                level.Update(state, bulletModel, camera, timeDelta, engineInstance, asteroidModel, explosionSound, lastState, laserSound);
+                level.Update(state, bulletModel, camera, timeDelta, asteroidModel, lastState);
 
                 if (level.getPlayer().getLives() < 0)
                 {
@@ -264,7 +264,7 @@ namespace Mono_test_android2
             }
             //not updating this one for now because its so big
             //dustEngineFar.Update(graphicsDevice);
-            dustEngineMiddle.Update(graphicsDevice);
+            //dustEngineMiddle.Update(graphicsDevice);
             dustEngineNear.Update(graphicsDevice);
             lastState = state;
         }
@@ -373,8 +373,8 @@ namespace Mono_test_android2
         {
             int width = graphicsDevice.Viewport.Width;
             int height = graphicsDevice.Viewport.Height;
-            dustEngineFar.Draw(spriteBatch);
-            dustEngineMiddle.Draw(spriteBatch);
+            //dustEngineFar.Draw(spriteBatch);
+            //dustEngineMiddle.Draw(spriteBatch);
             dustEngineNear.Draw(spriteBatch);
             if (gameState == GameState.Playing)
             {

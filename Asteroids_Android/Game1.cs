@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Mono_test_android2
+namespace Asteroids_Android
 {
     /// <summary>
     /// This is the main type for your game.
@@ -116,6 +116,9 @@ namespace Mono_test_android2
 
 
             stateManager.Draw(gameTime, spriteBatch, GraphicsDevice);
+            spriteBatch.Begin();
+            spriteBatch.DrawString(_spr_font, string.Format("FPS={0}", _fps), new Vector2(10.0f, 50.0f), Color.White);
+            spriteBatch.End();
             //spriteBatch.Begin();
             ////
             //spriteBatch.End();

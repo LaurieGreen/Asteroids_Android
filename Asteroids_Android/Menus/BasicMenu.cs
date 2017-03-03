@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace Mono_test_android2
+namespace Asteroids_Android
 {
     public class BasicMenu
     {
@@ -36,7 +36,7 @@ namespace Mono_test_android2
 
             for(int i = 0; i < optionList.Count;i++)
             {
-                buttonList.Add(new MenuButton(new Vector2((screenwidth/2), ((screenheight/8)*6+((small_font.MeasureString(optionList[i]).Y)*i))),graphics,500, 70, choiceList[i]));
+                buttonList.Add(new MenuButton(new Vector2((screenwidth/2), ((screenheight/8)*6+((small_font.MeasureString(optionList[i]).Y)*i))),graphics,500, 70, choiceList[i], small_font));
             }
             currentSelection = 0;
         }
@@ -114,27 +114,9 @@ namespace Mono_test_android2
             spriteBatch.Begin();
             spriteBatch.DrawString(large_font, "ASTEROIDS", new Vector2(screenwidth / 2 - (large_font.MeasureString("ASTEROIDS").Length() / 2), screenheight / 16), Color.White);
             spriteBatch.DrawString(medium_font, title, new Vector2(screenwidth / 2 - (medium_font.MeasureString(title).Length() / 2), screenheight / 5 + (medium_font.MeasureString(title).Y)), Color.White);
-            // Pulsate the size of the selected menu entry.
-            double time = gameTime.TotalGameTime.TotalSeconds;
-            float pulsate = (float)Math.Sin(time * 6) + 1;
-            float scale;
-            Vector2 origin = new Vector2(0, small_font.LineSpacing / 2);
-            Color choiceColor = new Color();
             for (int i = 0; i < choiceList.Count(); i++)
             {
-               
-                if (currentSelection == i)
-                {
-                    choiceColor = new Color(0, 204, 0);//green
-                    scale = 1 + pulsate * 0.05f;
-                }
-                else
-                {
-                    choiceColor = new Color(255, 255, 255);//white
-                    scale = 1;
-                }
-                buttonList[i].draw(spriteBatch);
-                spriteBatch.DrawString(small_font, choiceList[i], new Vector2(screenwidth / 2, (screenheight / 8)* 6 + ((small_font.MeasureString(choiceList[i]).Y)*i)), choiceColor, 0, new Vector2(small_font.MeasureString(choiceList[i]).Length() / 2, small_font.MeasureString(choiceList[i]).Y / 2), scale, SpriteEffects.None, 0);
+                buttonList[i].draw(spriteBatch, i);
             }
             spriteBatch.End();
 

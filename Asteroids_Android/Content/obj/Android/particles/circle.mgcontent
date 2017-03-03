@@ -3,7 +3,7 @@
   <SourceFile>C:/Users/Laurie/Dev/XNA/Asteroids_Android/Asteroids_Android/Content/particles/circle.x</SourceFile>
   <SourceTime>2014-10-30T15:30:56.5030677+00:00</SourceTime>
   <DestFile>C:/Users/Laurie/Dev/XNA/Asteroids_Android/Asteroids_Android/Content/bin/Android/particles/circle.xnb</DestFile>
-  <DestTime>2017-03-01T23:01:55.3851844+00:00</DestTime>
+  <DestTime>2017-03-02T23:57:07.6751732+00:00</DestTime>
   <Importer>OpenAssetImporter</Importer>
   <ImporterTime>2016-03-30T07:36:08+01:00</ImporterTime>
   <Processor>ModelProcessor</Processor>
@@ -54,7 +54,7 @@
   </Parameters>
   <Parameters>
     <Key>Scale</Key>
-    <Value>1</Value>
+    <Value>0.08</Value>
   </Parameters>
   <Parameters>
     <Key>SwapWindingOrder</Key>

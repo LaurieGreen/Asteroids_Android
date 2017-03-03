@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Asteroids_Android
 {
-    class MenuButton
+    class GameplayButton
     {
         Rectangle rect;
         String label;
@@ -27,16 +27,14 @@ namespace Asteroids_Android
         bool isClicked = false;
         SpriteFont font;
 
-        public MenuButton(Vector2 position, GraphicsDeviceManager graphics, int width, int height, String label, SpriteFont font)
+        public GameplayButton(Vector2 position, GraphicsDeviceManager graphics, int width, int height)
         {
             screenWidth = graphics.GraphicsDevice.Viewport.Width;
             screenHeight = graphics.GraphicsDevice.Viewport.Height;
-            this.font = font;
-            this.label = label;
             this.width = width;
             this.height = height;
-            this.position.X = position.X-(width/2);//incoming position should be the middle of the button so we need to -width/2 to get the left edge
-            this.position.Y = position.Y-(height/2);//incoming position should be the middle of the button so we need to -heigh/2 to get the top edge - we also plus 5 to make up for text being not center aligned
+            this.position.X = position.X;
+            this.position.Y = position.Y;
             rect = new Rectangle((int)this.position.X, (int)this.position.Y, width, height);
             texture = new Texture2D(graphics.GraphicsDevice, 1, 1);
             texture.SetData(new[] { Color.White });
@@ -51,11 +49,11 @@ namespace Asteroids_Android
             }
         }
 
-        public void draw(SpriteBatch spriteBatch, int i)
+        public void draw(SpriteBatch spriteBatch)
         {
             //spritebatch.Begin();
-            spriteBatch.Draw(texture, rect, Color.White*0.5f);
-            spriteBatch.DrawString(font, label, new Vector2((position.X + ((width/2)-(font.MeasureString(label).X/2))), (position.Y + ((height/2)-(font.MeasureString(label).Y/2)))), Color.White);
+            spriteBatch.Draw(texture, rect, Color.White * 0.5f);
+            //spriteBatch.DrawString(font, label, new Vector2((position.X + ((width / 2) - (font.MeasureString(label).X / 2))), (position.Y + ((height / 2) - (font.MeasureString(label).Y / 2)))), Color.White);
             //spritebatch.DrawString
             //spritebatch.End();
         }
@@ -63,6 +61,16 @@ namespace Asteroids_Android
         public bool getisClicked()
         {
             return isClicked;
+        }
+
+        public void setIsClicked(bool b)
+        {
+            isClicked = b;
+        }
+
+        public Rectangle getRect()
+        {
+            return rect;
         }
 
     }

@@ -3,9 +3,9 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 
-namespace Mono_test_android2
+namespace Asteroids_Android
 {
-    [Activity(Label = "Mono_test_android2"
+    [Activity(Label = "Asteroids"
         , MainLauncher = true
         , Icon = "@drawable/icon"
         , Theme = "@style/Theme.Splash"

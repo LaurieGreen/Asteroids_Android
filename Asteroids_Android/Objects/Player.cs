@@ -9,14 +9,17 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 
-namespace Mono_test_android2
+namespace Asteroids_Android
 {
     public class Player
     {
         Model CurrentTexture;
+        SoundEffect explosionSound;
+        SoundEffectInstance engineInstance;
         ParticleEngine engineParticle, explosionParticle;
         Vector3 Position;
         Vector3 Velocity;
+        Vector3 VelocityAdd;
         float Rotation;
         Matrix[] Transforms;
         Matrix shipTransformMatrix;
@@ -32,8 +35,10 @@ namespace Mono_test_android2
         int multiplier = 1;
         float spawnTimer = GameConstants.SpawnTimer;
 
-        public Player(Model currentTexture, Vector3 position, Vector3 velocity, Camera camera, List<Model> particleModel, int lives, int score)
+        public Player(Model currentTexture, Vector3 position, Vector3 velocity, Camera camera, List<Model> particleModel, int lives, int score, SoundEffectInstance engineInstance, SoundEffect explosionSound)
         {
+            this.engineInstance = engineInstance;
+            this.explosionSound = explosionSound;
             CurrentTexture = currentTexture;
             engineParticle = new ParticleEngine(particleModel);
             explosionParticle = new ParticleEngine(particleModel);
@@ -107,7 +112,17 @@ namespace Mono_test_android2
             return multiplier;
         }
 
-        public void Update(KeyboardState state, Model bulletModel, Camera camera, float timeDelta, SoundEffectInstance engineInstance)
+        public void setRotationRight()
+        {
+            Rotation -= 0.095f; ;
+        }
+
+        public void setRotationLeft()
+        {
+            Rotation += 0.095f; ;
+        }
+
+        public void Update(KeyboardState state, Model bulletModel, Camera camera, float timeDelta)
         {
             spawnTimer -= timeDelta;
             //if (multiplier > 1)
@@ -154,41 +169,22 @@ namespace Mono_test_android2
             }
             RotationMatrix = Matrix.CreateRotationZ(Rotation);
 
-            Vector3 VelocityAdd = Vector3.Zero;
+            VelocityAdd = Vector3.Zero;
             VelocityAdd.X = (float)Math.Sin(Rotation);
             VelocityAdd.Y = -(float)Math.Cos(Rotation);
             VelocityAdd /= 75;
 
             if (state.IsKeyDown(Keys.Up) || state.IsKeyDown(Keys.W))
             {
-                Velocity += VelocityAdd;
-                engineParticle.getParticles().Add(engineParticle.GenerateNewParticle(Position + (-0.725f * RotationMatrix.Up), Velocity * 0.5f, camera));
-                if (engineInstance.State == SoundState.Stopped)
-                {
-                    engineInstance.Volume = 0.75f;
-                    engineInstance.IsLooped = true;
-                    engineInstance.Play();
-                }
-                else
-                    engineInstance.Resume();
+                setThrust(camera);
             }
             else
             {
-                if (engineInstance.State == SoundState.Playing)
-                {
-                    engineInstance.Volume *= 0.75f;
-                    if (engineInstance.State == SoundState.Playing && engineInstance.Volume < 0.05f)
-                    {
-                        engineInstance.Pause();
-                        engineInstance.Volume = 0.75f;
-                    }
-                }
+                killThrust();
 
             }
             engineParticle.Update();
             explosionParticle.Update();
-
-            System.Console.WriteLine("player rotation: " + Rotation);
 
             Position -= Velocity;
             Velocity *= 0.999f;
@@ -201,6 +197,33 @@ namespace Mono_test_android2
             if (Position.Y < -GameConstants.PlayfieldSizeY)
                 Position.Y += 2 * GameConstants.PlayfieldSizeY;
 
+        }
+
+        public void killThrust()
+        {
+            if (engineInstance.State == SoundState.Playing)
+            {
+                engineInstance.Volume *= 0.75f;
+                if (engineInstance.State == SoundState.Playing && engineInstance.Volume < 0.05f)
+                {
+                    engineInstance.Pause();
+                    engineInstance.Volume = 0.75f;
+                }
+            }
+        }
+
+        public void setThrust(Camera camera)
+        {
+            Velocity += VelocityAdd;
+            engineParticle.getParticles().Add(engineParticle.GenerateNewParticle(Position + (-0.725f * RotationMatrix.Up), Velocity * 0.5f, camera));
+            if (engineInstance.State == SoundState.Stopped)
+            {
+                engineInstance.Volume = 0.75f;
+                engineInstance.IsLooped = true;
+                engineInstance.Play();
+            }
+            else
+                engineInstance.Resume();
         }
 
         private void explosion(Camera camera)

@@ -6,7 +6,7 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <application android:label="Asteroids_Android" android:icon="@drawable/icon" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
-    <activity android:alwaysRetainTaskState="true" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:icon="@drawable/icon" android:label="Mono_test_android2" android:launchMode="singleInstance" android:screenOrientation="sensorLandscape" android:theme="@style/Theme.Splash" android:name="md5eddf2bd86ee0c8989fb6f70675ea3f3a.Activity1">
+    <activity android:alwaysRetainTaskState="true" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:icon="@drawable/icon" android:label="Asteroids" android:launchMode="singleInstance" android:screenOrientation="sensorLandscape" android:theme="@style/Theme.Splash" android:name="md5a49db5bd20c78755459b1f9149e4a336.Activity1">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
         <category android:name="android.intent.category.LAUNCHER" />

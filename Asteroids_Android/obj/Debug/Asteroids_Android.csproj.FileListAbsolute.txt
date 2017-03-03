@@ -4,7 +4,6 @@ C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\D
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\Asteroids_Android.Asteroids_Android-Signed.apk
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\MonoGame.Framework.dll
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\MonoGame.Framework.xml
-C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\Asteroids_Android.csprojResolveAssemblyReference.cache
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\Asteroids_Android.dll
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\Asteroids_Android.pdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\bin\Asteroids_Android.Asteroids_Android.apk
@@ -14,9 +13,9 @@ C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\res\drawab
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\res\values\styles.xml
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\R.cs.flag
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\uploadflags.txt
+C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\Asteroids_Android.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\Java.Interop.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\Mono.Android.dll.mdb
-C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\Mono_test_android2.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\mscorlib.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\OpenTK-1.0.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\System.ComponentModel.Composition.dll.mdb
@@ -27,9 +26,9 @@ C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\D
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\System.ServiceModel.Internals.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\System.Xml.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\System.Xml.Linq.dll.mdb
+C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\Asteroids_Android.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\Java.Interop.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\Mono.Android.dll.mdb
-C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\Mono_test_android2.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\mscorlib.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\OpenTK-1.0.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\System.ComponentModel.Composition.dll.mdb
@@ -40,7 +39,6 @@ C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\as
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
-C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\Asteroids_Android.dll.mdb
-C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\android\assets\Asteroids_Android.dll.mdb
+C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\Asteroids_Android.csprojResolveAssemblyReference.cache
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\Asteroids_Android.dll.mdb
 C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\bin\Android\AnyCPU\Debug\Asteroids_Android.dll.mdb

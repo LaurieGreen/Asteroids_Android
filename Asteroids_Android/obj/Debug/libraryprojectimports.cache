@@ -2,13 +2,13 @@
 <Paths>
   <Jars></Jars>
   <ResolvedResourceDirectories>
-    <ResolvedResourceDirectory>C:\Users\Laurie\Documents\Visual Studio 2015\Projects\Mono_test_android2\Mono_test_android2\obj\Debug\__library_projects__\MonoGame.Framework\library_project_imports\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\__library_projects__\MonoGame.Framework\library_project_imports\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
     <ResolvedAssetDirectory>obj\Debug\__library_projects__\MonoGame.Framework\library_project_imports\assets</ResolvedAssetDirectory>
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
-    <ResolvedResourceDirectoryStamp>C:\Users\Laurie\Documents\Visual Studio 2015\Projects\Mono_test_android2\Mono_test_android2\obj\Debug\__library_projects__\MonoGame.Framework.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Laurie\Dev\XNA\Asteroids_Android\Asteroids_Android\obj\Debug\__library_projects__\MonoGame.Framework.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
 </Paths>

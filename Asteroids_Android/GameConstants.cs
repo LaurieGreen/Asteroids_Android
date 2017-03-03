@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Mono_test_android2
+namespace Asteroids_Android
 {
     static class GameConstants
     {

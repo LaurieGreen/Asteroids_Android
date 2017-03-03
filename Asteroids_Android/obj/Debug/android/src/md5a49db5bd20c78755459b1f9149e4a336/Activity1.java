@@ -1,4 +1,4 @@
-package md54cf3f5e08ca3adde0dcab2eadc84520e;
+package md5a49db5bd20c78755459b1f9149e4a336;
 
 
 public class Activity1
@@ -12,7 +12,7 @@ public class Activity1
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"";
-		mono.android.Runtime.register ("Mono_test_android2.Activity1, Mono_test_android2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", Activity1.class, __md_methods);
+		mono.android.Runtime.register ("Asteroids_Android.Activity1, Asteroids_Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", Activity1.class, __md_methods);
 	}
 
 
@@ -20,7 +20,7 @@ public class Activity1
 	{
 		super ();
 		if (getClass () == Activity1.class)
-			mono.android.TypeManager.Activate ("Mono_test_android2.Activity1, Mono_test_android2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+			mono.android.TypeManager.Activate ("Asteroids_Android.Activity1, Asteroids_Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 

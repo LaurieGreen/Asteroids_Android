@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Mono_test_android2
+namespace Asteroids_Android
 {
     public class Asteroid
     {
